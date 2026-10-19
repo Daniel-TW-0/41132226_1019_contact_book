@@ -53,8 +53,8 @@ void MyWidget::on_pushButton_clicked()
 
     ui->tableWidget->setItem(targetRow, 0, inputRow1);
     ui->tableWidget->setItem(targetRow, 1, inputRow2);
-    ui->tableWidget->setItem(targetRow, 2, inputRow3);
     ui->tableWidget->setItem(targetRow, 3, inputRow4);
+    ui->tableWidget->setItem(targetRow, 2, inputRow3);
 
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
@@ -70,16 +70,57 @@ void MyWidget::on_pushButton_2_clicked()
 
     for (int r = 0; r < rows; ++r)
     {
+        QStringList rowData;
         for (int c = 0; c < cols; ++c)
         {
             QTableWidgetItem *item = ui->tableWidget->item(r, c);
-            if (item)
-            {
-                str += item->text() + ",";
-            }
+            rowData << (item ? item->text() : "");
         }
-        str += "\n";
+        str += rowData.join(",") + "\n";
     }
 
     Write(mFilename, str);
+}
+
+void MyWidget::on_pushButton_3_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        QStringLiteral("選擇要匯入的檔案"),
+        "C:/test",
+        QStringLiteral("文字檔 (*.txt);;所有檔案 (*.*)")
+        );
+
+    if (fileName.isEmpty())
+        return;
+
+    QFile mFile(fileName);
+    if (!mFile.open(QFile::ReadOnly | QFile::Text))
+    {
+        qDebug() << "無法開啟檔案！";
+        return;
+    }
+
+    QTextStream in(&mFile);
+
+    ui->tableWidget->setRowCount(0);
+
+    while (!in.atEnd())
+    {
+        QString line = in.readLine().trimmed();
+        if (line.isEmpty())
+            continue;
+
+        QStringList dataList = line.split(",");
+
+        int targetRow = ui->tableWidget->rowCount();
+        ui->tableWidget->insertRow(targetRow);
+
+        for (int c = 0; c < dataList.size() && c < 4; ++c)
+        {
+            ui->tableWidget->setItem(targetRow, c, new QTableWidgetItem(dataList[c]));
+        }
+    }
+
+    mFile.close();
 }

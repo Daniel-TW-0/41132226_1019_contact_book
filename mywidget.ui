@@ -64,6 +64,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>匯出</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>新增</string>
@@ -71,9 +78,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_3">
        <property name="text">
-        <string>匯出</string>
+        <string>匯入</string>
        </property>
       </widget>
      </item>
