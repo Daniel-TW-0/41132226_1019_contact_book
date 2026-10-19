@@ -1,3 +1,0 @@
-C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\41132226_1019_contact_book.dir/objects.a
-C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\41132226_1019_contact_book.dir/objects.a @CMakeFiles\41132226_1019_contact_book.dir\objects1.rsp
-C:\Qt\Tools\mingw1310_64\bin\g++.exe -g -mwindows -Wl,--whole-archive CMakeFiles\41132226_1019_contact_book.dir/objects.a -Wl,--no-whole-archive -o 41132226_1019_contact_book.exe -Wl,--out-implib,lib41132226_1019_contact_book.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\41132226_1019_contact_book.dir\linkLibs.rsp

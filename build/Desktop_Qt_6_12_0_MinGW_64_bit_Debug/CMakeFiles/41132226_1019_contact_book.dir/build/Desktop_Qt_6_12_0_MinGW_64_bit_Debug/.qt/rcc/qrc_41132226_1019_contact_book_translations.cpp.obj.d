@@ -1,2 +1,0 @@
-CMakeFiles/41132226_1019_contact_book.dir/build/Desktop_Qt_6_12_0_MinGW_64_bit_Debug/.qt/rcc/qrc_41132226_1019_contact_book_translations.cpp.obj: \
- C:\Qt_example\41132226_1019_contact_book\build\Desktop_Qt_6_12_0_MinGW_64_bit_Debug\.qt\rcc\qrc_41132226_1019_contact_book_translations.cpp
