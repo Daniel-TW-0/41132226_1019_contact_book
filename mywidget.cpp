@@ -3,7 +3,7 @@
 #include <QTableWidgetItem>
 #include <QStringList>
 
-QString mFilename = "C:/Qt_example/test/myfile.txt";
+QString mFilename = "C:/Qt_example/41132226_1019_contact_book/csv/myfile.csv";
 
 void Write(QString Filename, QString str)
 {
@@ -87,8 +87,8 @@ void MyWidget::on_pushButton_3_clicked()
     QString fileName = QFileDialog::getOpenFileName(
         this,
         QStringLiteral("選擇要匯入的檔案"),
-        "C:/test",
-        QStringLiteral("文字檔 (*.txt);;所有檔案 (*.*)")
+        ".", // 開啟當前專案目錄
+        QStringLiteral("CSV 檔案 (*.csv);;所有檔案 (*.*)")
         );
 
     if (fileName.isEmpty())
@@ -102,7 +102,6 @@ void MyWidget::on_pushButton_3_clicked()
     }
 
     QTextStream in(&mFile);
-
     ui->tableWidget->setRowCount(0);
 
     while (!in.atEnd())
@@ -112,7 +111,6 @@ void MyWidget::on_pushButton_3_clicked()
             continue;
 
         QStringList dataList = line.split(",");
-
         int targetRow = ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(targetRow);
 
